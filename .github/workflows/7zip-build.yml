@@ -1,0 +1,74 @@
+name: "[Engine] Build"
+
+on:
+  push:
+
+env:
+  BUILD_CONFIGURATION: Release
+  DEPENDENCIES_DIR: ${{ github.workspace }}\build\dependencies
+  ARTIFACTS_ROOT_DIR: ${{ github.workspace }}\build\artifacts
+  GDRIVE_DEPENDENCIES_DIR: packages:/7zip/dependencies
+
+jobs:
+  build_7zip:
+    name: Build 7zip DLL
+    runs-on: windows-2022
+
+    strategy:
+      matrix:
+        brand: [ 'AURA' ] # TODO: add 'IDG' once completed
+        project:
+          - name: x64-7zip
+            depends_on: [ 'x64-7zip' ]
+
+    env:
+      ARTIFACTS_DIR: ${{ matrix.project.name }}
+      GDRIVE_ARTIFACTS_BRANCHES_DIR: packages:/aura-av/engine/${{ matrix.brand }}/branches
+      GDRIVE_ARTIFACTS_RELEASES_DIR: packages:/aura-av/engine/${{ matrix.brand }}/releases
+      SDK_ARTIFACTS_NAME: ${{ matrix.brand }}-${{ matrix.project.name }}
+
+    steps:
+    # Checkout repo
+    - uses: actions/checkout@v4
+
+    # Add msbuild to PATH
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
+
+    # Setup rclone
+    - name: Setup rclone
+      uses: AnimMouse/setup-rclone@v1
+      with:
+        rclone_config: ${{ secrets.RCLONE_CONFIG }}
+
+    # Build 7zip
+    - name: Build x64-7zip
+      if: contains(matrix.project.depends_on, 'x64-7zip')
+      shell: powershell
+      run: |
+        ${{ github.workspace }}\Scripts\build.ps1 "${{ github.workspace }}\CPP\7zip\UI\Console\Console.sln" ${{ env.BUILD_CONFIGURATION }} 'x64' "${{ github.run_number }}"
+        rclone copy "${{ github.workspace }}\Output\x64\${{ env.BUILD_CONFIGURATION }}\Binaries" "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.ARTIFACTS_DIR }}" --include "*.{exe,dll}" --ignore-case
+
+
+    # Upload artifact output folders for unit tests
+    - uses: actions/upload-artifact@v4
+      if: contains(matrix.project.depends_on, 'x64-7zip')
+      with:
+        name: x64-7zip-output
+        path: |
+          ${{ github.workspace }}\Output
+        if-no-files-found: error
+        retention-days: 1
+
+    # Zip artifacts
+    - name: Zip artifacts
+      run: |
+        7z a -t7z -mx=9 "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.SDK_ARTIFACTS_NAME }}.7z" "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.ARTIFACTS_DIR }}\*"
+
+    # Upload artifacts
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.SDK_ARTIFACTS_NAME }}
+        path: ${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.SDK_ARTIFACTS_NAME }}.7z
+        retention-days: 1
