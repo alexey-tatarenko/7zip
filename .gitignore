@@ -1,0 +1,7 @@
+# Ignore VS temporary, output and intermediate files
+CPP/7zip/UI/Console/.vs/*
+Output/*
+.vs/*
+*.vcxproj.user
+*.aps
+*.bak
