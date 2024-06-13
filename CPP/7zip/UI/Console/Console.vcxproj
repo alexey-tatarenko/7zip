@@ -30,7 +30,7 @@
     <ProjectName>Au7zUnpacker</ProjectName>
     <ProjectGuid>{483C6AC7-F572-41FE-8115-F754E922BDD3}</ProjectGuid>
     <RootNamespace>Console</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -101,33 +101,33 @@
     <_ProjectFileVersion>16.0.32002.118</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development|Win32'">
-    <OutDir>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development|x64'">
-    <OutDir>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -143,16 +143,16 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader />
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
-      <ObjectFileName>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
-      <ProgramDataBaseFileName>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
+      <ObjectFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>false</TreatWarningAsError>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <CallingConvention>FastCall</CallingConvention>
-      <AdditionalIncludeDirectories>..\..\..\..\..\Common;..\..\..\..\..\Common\MaxScanner;..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\Common;..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -164,7 +164,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ModuleDefinitionFile>console.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\7z.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\7z.pdb</ProgramDatabaseFile>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention />
@@ -172,7 +172,7 @@
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.bsc</OutputFile>
+      <OutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -190,16 +190,16 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
-      <ObjectFileName>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
-      <ProgramDataBaseFileName>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
+      <ObjectFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>false</TreatWarningAsError>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CallingConvention>FastCall</CallingConvention>
-      <AdditionalIncludeDirectories>..\..\..\..\..\Common;..\..\..\..\..\Common\MaxScanner;..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\Common;..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -211,7 +211,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ModuleDefinitionFile>console.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\7z.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\7z.pdb</ProgramDatabaseFile>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention />
@@ -220,7 +220,7 @@
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.bsc</OutputFile>
+      <OutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -237,17 +237,17 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader />
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.pch</PrecompiledHeaderOutputFile>
       <AssemblerOutput>All</AssemblerOutput>
-      <AssemblerListingLocation>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
-      <ObjectFileName>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
-      <ProgramDataBaseFileName>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
+      <AssemblerListingLocation>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
+      <ObjectFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>false</TreatWarningAsError>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat />
       <CallingConvention>FastCall</CallingConvention>
-      <AdditionalIncludeDirectories>..\..\..\..\..\Common;..\..\..\..\..\Common\MaxScanner;..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\Common;..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -259,7 +259,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ModuleDefinitionFile>console.def</ModuleDefinitionFile>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\7z.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\7z.pdb</ProgramDatabaseFile>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention />
@@ -267,7 +267,7 @@
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.bsc</OutputFile>
+      <OutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Development|Win32'">
@@ -286,11 +286,11 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.pch</PrecompiledHeaderOutputFile>
       <AssemblerOutput>All</AssemblerOutput>
-      <AssemblerListingLocation>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
-      <ObjectFileName>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
-      <ProgramDataBaseFileName>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
+      <AssemblerListingLocation>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
+      <ObjectFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>false</TreatWarningAsError>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -309,7 +309,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ModuleDefinitionFile>console.def</ModuleDefinitionFile>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\7z.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\7z.pdb</ProgramDatabaseFile>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
@@ -318,7 +318,7 @@
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.bsc</OutputFile>
+      <OutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -336,17 +336,17 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader />
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.pch</PrecompiledHeaderOutputFile>
       <AssemblerOutput>All</AssemblerOutput>
-      <AssemblerListingLocation>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
-      <ObjectFileName>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
-      <ProgramDataBaseFileName>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
+      <AssemblerListingLocation>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
+      <ObjectFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>false</TreatWarningAsError>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat />
       <CallingConvention>FastCall</CallingConvention>
-      <AdditionalIncludeDirectories>..\..\..\..\..\Common;..\..\..\..\..\Common\MaxScanner;..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\Common;..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -358,7 +358,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ModuleDefinitionFile>console.def</ModuleDefinitionFile>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\7z.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\7z.pdb</ProgramDatabaseFile>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention />
@@ -366,7 +366,7 @@
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.bsc</OutputFile>
+      <OutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Development|x64'">
@@ -386,11 +386,11 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.pch</PrecompiledHeaderOutputFile>
       <AssemblerOutput>All</AssemblerOutput>
-      <AssemblerListingLocation>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
-      <ObjectFileName>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
-      <ProgramDataBaseFileName>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
+      <AssemblerListingLocation>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
+      <ObjectFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>false</TreatWarningAsError>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -408,7 +408,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ModuleDefinitionFile>console.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\7z.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\7z.pdb</ProgramDatabaseFile>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
@@ -417,7 +417,7 @@
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(SolutionDir)..\..\..\..\Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.bsc</OutputFile>
+      <OutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Console.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>

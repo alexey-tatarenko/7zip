@@ -62,7 +62,7 @@ jobs:
       if: contains(matrix.project.depends_on, 'x64-7zip')
       shell: powershell
       run: |
-        ${{ github.workspace }}\Scripts\build.ps1 "${{ github.workspace }}\CPP\7zip\UI\Console\Console.sln" ${{ env.BUILD_CONFIGURATION }} 'x64' "${{ github.run_number }}"
+        ${{ github.workspace }}\Scripts\build.ps1 "${{ github.workspace }}\Au7zUnpacker.sln" ${{ env.BUILD_CONFIGURATION }} 'x64' "${{ github.run_number }}"
         rclone copy "${{ github.workspace }}\Output\x64\${{ env.BUILD_CONFIGURATION }}\Binaries" "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.ARTIFACTS_DIR }}" --include "*.{exe,dll}" --ignore-case
 
 
