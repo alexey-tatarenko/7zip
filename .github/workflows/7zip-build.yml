@@ -23,8 +23,8 @@ jobs:
 
     env:
       ARTIFACTS_DIR: ${{ matrix.project.name }}
-      GDRIVE_ARTIFACTS_BRANCHES_DIR: packages:/aura-av/engine/${{ matrix.brand }}/branches
-      GDRIVE_ARTIFACTS_RELEASES_DIR: packages:/aura-av/engine/${{ matrix.brand }}/releases
+      GDRIVE_ARTIFACTS_BRANCHES_DIR: packages:/aura-av/thirdparty/7zip/${{ matrix.brand }}/branches
+      GDRIVE_ARTIFACTS_RELEASES_DIR: packages:/aura-av/thirdparty/7zip/${{ matrix.brand }}/releases
       SDK_ARTIFACTS_NAME: ${{ matrix.brand }}-${{ matrix.project.name }}
 
     steps:
@@ -40,6 +40,22 @@ jobs:
       uses: AnimMouse/setup-rclone@v1
       with:
         rclone_config: ${{ secrets.RCLONE_CONFIG }}
+
+    # Set env variables
+    - name: Set environment variables
+      shell: powershell
+      run: |
+        $BRANCH = "${{ github.ref_name }}"
+        $RELEASE = $BRANCH.StartsWith('rev/')
+        echo "RELEASE=$RELEASE" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+        $VersionFile = Get-Content ${{ github.workspace }}C\7zVersion.h -Raw
+        $RegexProductVersion = r'MY_VERSION_NUMBERS[\s=]+"(?<version>[\d\.]+)"'
+
+        if ($Versions -match $RegexProductVersion) {
+          $match = $Matches.version
+          echo "PRODUCT_VERSION=$match" | Out-File -FilePath $env:GITHUB_ENV -Append
+        }
 
     # Build 7zip
     - name: Build x64-7zip
@@ -72,3 +88,8 @@ jobs:
         name: ${{ env.SDK_ARTIFACTS_NAME }}
         path: ${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.SDK_ARTIFACTS_NAME }}.7z
         retention-days: 1
+
+    # Upload release artifacts to GDrive
+    - name: Upload release artifacts
+      run: |
+        rclone copy "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.SDK_ARTIFACTS_NAME }}.7z" "${{ env.GDRIVE_ARTIFACTS_RELEASES_DIR }}/${{ env.PRODUCT_VERSION }}/RC/${{ github.run_id }}"
