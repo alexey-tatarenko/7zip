@@ -52,7 +52,7 @@ jobs:
         $VersionFile = Get-Content ${{ github.workspace }}\C\7zVersion.h -Raw
         $RegexProductVersion = 'MY_VERSION_NUMBERS[\s=]+"(?<version>[\d\.]+)"'
 
-        if ($Versions -match $RegexProductVersion) {
+        if ($VersionFile -match $RegexProductVersion) {
           $match = $Matches.version
           echo "PRODUCT_VERSION=$match" | Out-File -FilePath $env:GITHUB_ENV -Append
         }
