@@ -115,8 +115,9 @@ jobs:
       shell: powershell
       run: |
         $items = Get-ChildItem -Path ${{ github.workspace }}\Output -Recurse
+        echo $items
         foreach ($item in $items) {
-          Write-Host "Item: $($item.FullName)"
+          echo "Item: $($item.FullName)"
         }
 
     - name: Run tests x64-7zip
