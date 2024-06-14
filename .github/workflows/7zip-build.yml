@@ -90,9 +90,9 @@ jobs:
         retention-days: 1
 
     # Upload release artifacts to GDrive
-    - name: Upload release artifacts
-      run: |
-        rclone copy "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.SDK_ARTIFACTS_NAME }}.7z" "${{ env.GDRIVE_ARTIFACTS_RELEASES_DIR }}/${{ env.PRODUCT_VERSION }}/RC/${{ github.run_id }}"
+    # - name: Upload release artifacts
+    #   run: |
+    #     rclone copy "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.SDK_ARTIFACTS_NAME }}.7z" "${{ env.GDRIVE_ARTIFACTS_RELEASES_DIR }}/${{ env.PRODUCT_VERSION }}/RC/${{ github.run_id }}"
 
   test_7zip:
     name: Run Au7zUnpacker unit tests
