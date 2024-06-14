@@ -93,3 +93,24 @@ jobs:
     - name: Upload release artifacts
       run: |
         rclone copy "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.SDK_ARTIFACTS_NAME }}.7z" "${{ env.GDRIVE_ARTIFACTS_RELEASES_DIR }}/${{ env.PRODUCT_VERSION }}/RC/${{ github.run_id }}"
+
+  test_7zip:
+    name: Run Au7zUnpacker unit tests
+    needs: build_7zip
+    runs-on: windows-2022
+    strategy:
+      matrix:
+        brand: [ 'AURA' ]
+    env:
+      SDK_ARTIFACTS_NAME_PART: ${{ matrix.brand }}
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/download-artifact@v4
+      with:
+        name: x64-7zip-output
+        path: ${{ github.workspace }}
+
+    - name: Run tests x64-7zip
+      run: ${{ github.workspace }}\Output\x64\${{ env.BUILD_CONFIGURATION }}\Test_7zip.exe
