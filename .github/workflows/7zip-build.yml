@@ -111,5 +111,8 @@ jobs:
         name: x64-7zip-output
         path: ${{ github.workspace }}
 
+    - name: List contents of the current directory recursively
+      run: dir /s ${{ github.workspace }}\Output
+
     - name: Run tests x64-7zip
       run: ${{ github.workspace }}\Output\x64\${{ env.BUILD_CONFIGURATION }}\Test_7zip.exe
