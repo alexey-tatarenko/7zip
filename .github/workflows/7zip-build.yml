@@ -112,7 +112,8 @@ jobs:
         path: ${{ github.workspace }}
 
     - name: List contents of the current directory recursively
-      run: dir /s ${{ github.workspace }}\Output
+      shell: powershell
+      run: Get-ChildItem -Path ${{ github.workspace }}\Output -Recurse
 
     - name: Run tests x64-7zip
       run: ${{ github.workspace }}\Output\x64\${{ env.BUILD_CONFIGURATION }}\Test_7zip.exe
