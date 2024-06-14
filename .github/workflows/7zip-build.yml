@@ -111,14 +111,6 @@ jobs:
         name: x64-7zip-output
         path: ${{ github.workspace }}
 
-    - name: List contents of the current directory recursively
-      shell: powershell
-      run: |
-        $items = Get-ChildItem -Path ${{ github.workspace }}\Output -Recurse
-        echo $items
-        foreach ($item in $items) {
-          echo "Item: $($item.FullName)"
-        }
-
     - name: Run tests x64-7zip
-      run: ${{ github.workspace }}\Output\x64\${{ env.BUILD_CONFIGURATION }}\Test_7zip.exe
+      run: ${{ github.workspace }}\x64\${{ env.BUILD_CONFIGURATION }}\Test_7zip.exe
+      # run: ${{ github.workspace }}\Output\x64\${{ env.BUILD_CONFIGURATION }}\Test_7zip.exe
