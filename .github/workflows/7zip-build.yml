@@ -25,7 +25,7 @@ jobs:
       ARTIFACTS_DIR: ${{ matrix.project.name }}
       GDRIVE_ARTIFACTS_BRANCHES_DIR: packages:/aura-av/thirdparty/7zip/${{ matrix.brand }}/branches
       GDRIVE_ARTIFACTS_RELEASES_DIR: packages:/aura-av/thirdparty/7zip/${{ matrix.brand }}/releases
-      SDK_ARTIFACTS_NAME: ${{ matrix.brand }}-${{ matrix.project.name }}
+      UNPACKER_ARTIFACTS_NAME: ${{ matrix.brand }}-${{ matrix.project.name }}
 
     steps:
     # Checkout repo
@@ -65,7 +65,6 @@ jobs:
         ${{ github.workspace }}\Scripts\build.ps1 "${{ github.workspace }}\Au7zUnpacker.sln" ${{ env.BUILD_CONFIGURATION }} 'x64' "${{ github.run_number }}"
         rclone copy "${{ github.workspace }}\Output\x64\${{ env.BUILD_CONFIGURATION }}\Binaries" "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.ARTIFACTS_DIR }}" --include "*.{exe,dll}" --ignore-case
 
-
     # Upload artifact output folders for unit tests
     - uses: actions/upload-artifact@v4
       if: contains(matrix.project.depends_on, 'x64-7zip')
@@ -79,20 +78,20 @@ jobs:
     # Zip artifacts
     - name: Zip artifacts
       run: |
-        7z a -t7z -mx=9 "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.SDK_ARTIFACTS_NAME }}.7z" "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.ARTIFACTS_DIR }}\*"
+        7z a -t7z -mx=9 "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.UNPACKER_ARTIFACTS_NAME }}.7z" "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.ARTIFACTS_DIR }}\*"
 
     # Upload artifacts
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.SDK_ARTIFACTS_NAME }}
-        path: ${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.SDK_ARTIFACTS_NAME }}.7z
+        name: ${{ env.UNPACKER_ARTIFACTS_NAME }}
+        path: ${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.UNPACKER_ARTIFACTS_NAME }}.7z
         retention-days: 1
 
     # Upload release artifacts to GDrive
     # - name: Upload release artifacts
     #   run: |
-    #     rclone copy "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.SDK_ARTIFACTS_NAME }}.7z" "${{ env.GDRIVE_ARTIFACTS_RELEASES_DIR }}/${{ env.PRODUCT_VERSION }}/RC/${{ github.run_id }}"
+    #     rclone copy "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.UNPACKER_ARTIFACTS_NAME }}.7z" "${{ env.GDRIVE_ARTIFACTS_RELEASES_DIR }}/${{ env.PRODUCT_VERSION }}/RC/${{ github.run_id }}"
 
   test_7zip:
     name: Run Au7zUnpacker unit tests
@@ -102,7 +101,7 @@ jobs:
       matrix:
         brand: [ 'AURA' ]
     env:
-      SDK_ARTIFACTS_NAME_PART: ${{ matrix.brand }}
+      UNPACKER_ARTIFACTS_NAME_PART: ${{ matrix.brand }}
 
     steps:
     - uses: actions/checkout@v4
