@@ -812,7 +812,8 @@ int Main2(
     return 0;
 }
 
-int ExtractArchiveFile(TCHAR * chAction, TCHAR * chArchiveName, TCHAR * chInOutputFolderName, TCHAR * chPassword, TCHAR * chFileFilter, ScanFileState * pScanFileState)
+int ExtractArchiveFile(const TCHAR* chAction, const TCHAR* chArchiveName, const TCHAR* chInOutputFolderName,
+    const TCHAR* chPassword, const TCHAR* chFileFilter, ScanFileState* pScanFileState)
 {
   #if defined(MY_CPU_SIZEOF_POINTER)
     { unsigned k = sizeof(void *); if (k != MY_CPU_SIZEOF_POINTER) throw "incorrect MY_CPU_PTR_SIZE"; }
@@ -1633,8 +1634,9 @@ int ExtractArchiveFile(TCHAR * chAction, TCHAR * chArchiveName, TCHAR * chInOutp
     Description		: It is a exported function which calls "ExtractFile" for extraction purpose
 --------------------------------------------------------------------------------------*/
 
-BOOL WINAPI __stdcall UnMax7zArchive(TCHAR* chAction, TCHAR* chArchiveName, TCHAR* chOutputFolderName,
-    TCHAR* chPassword, TCHAR* chFileFilter, ScanFileState* pScanFileState)
+bool WINAPI __stdcall UnMax7zArchive(const TCHAR* chAction, const TCHAR* chArchiveName,
+    const TCHAR* chOutputFolderName, const TCHAR* chPassword, const TCHAR* chFileFilter,
+    ScanFileState* pScanFileState)
 {
   int iRet = ExtractArchiveFile(chAction, chArchiveName, chOutputFolderName,
       chPassword, chFileFilter, pScanFileState);
@@ -1651,8 +1653,8 @@ Purpose			: Exported function to call "ExtractFile" for extraction purpose
 Author			: Sandip Sanap
 Description		: It is a exported function which calls "ExtractFile" for extraction purpose
 --------------------------------------------------------------------------------------*/
-BOOL WINAPI __stdcall Max7zArchive(TCHAR* chAction, TCHAR* chArchiveName, TCHAR* chInputFileFolderName,
-    TCHAR* chPassword, TCHAR* chFileFilter)
+bool WINAPI __stdcall Max7zArchive(const TCHAR* chAction, const TCHAR* chArchiveName,
+    const TCHAR* chInputFileFolderName, const TCHAR* chPassword, const TCHAR* chFileFilter)
 {
   int iRet = ExtractArchiveFile(chAction, chArchiveName, chInputFileFolderName, chPassword, chFileFilter, NULL);
   return iRet == 0;

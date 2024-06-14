@@ -62,9 +62,11 @@
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Development|Win32'">
     <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Development|x64'">
     <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -114,11 +116,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\catch2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\catch2;$(SolutionDir)CPP\7zip\UI\Common\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
       <ObjectFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
       <PrecompiledHeaderOutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Test_7zip.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,11 +136,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\catch2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\catch2;$(SolutionDir)CPP\7zip\UI\Common\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
       <ObjectFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
       <PrecompiledHeaderOutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Test_7zip.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -152,11 +156,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\catch2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\catch2;$(SolutionDir)CPP\7zip\UI\Common\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
       <ObjectFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
       <PrecompiledHeaderOutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Test_7zip.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -171,11 +176,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\catch2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\catch2;$(SolutionDir)CPP\7zip\UI\Common\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
       <ObjectFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
       <PrecompiledHeaderOutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Test_7zip.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -186,20 +192,26 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Development|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\catch2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\catch2;$(SolutionDir)CPP\7zip\UI\Common\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
       <ObjectFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
       <PrecompiledHeaderOutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Test_7zip.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Development|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\catch2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\catch2;$(SolutionDir)CPP\7zip\UI\Common\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</AssemblerListingLocation>
       <ObjectFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ObjectFileName>
       <PrecompiledHeaderOutputFile>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\Test_7zip.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>$(SolutionDir)Output\$(Platform)\$(Configuration)\Intermediate\$(ProjectName)\</ProgramDataBaseFileName>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
