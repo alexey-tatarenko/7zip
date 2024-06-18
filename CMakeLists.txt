@@ -37,15 +37,10 @@ endif()
 
 set(MAIN_OUTPUT_DIR ${CMAKE_SOURCE_DIR}/Output/x64)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/dir1)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/dir2)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/dir3)
-set(CMAKE_TEMP_DIR ${CMAKE_BINARY_DIR}/dir4)
+set(TARGET_UNPACKER_NAME "Au7zUnpacker")
+add_library(${TARGET_UNPACKER_NAME} SHARED ${SOURCES})
 
-set(target_name "7zip")
-add_library(${target_name} SHARED ${SOURCES})
-
-set_target_properties(${target_name} PROPERTIES
+set_target_properties(${TARGET_UNPACKER_NAME} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY_DEBUG ${MAIN_OUTPUT_DIR}/Debug/Binaries
     RUNTIME_OUTPUT_DIRECTORY_RELEASE ${MAIN_OUTPUT_DIR}/Release/Binaries
     RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL ${MAIN_OUTPUT_DIR}/MinSizeRel/Binaries
@@ -57,7 +52,7 @@ set_target_properties(${target_name} PROPERTIES
 )
 
 target_sources(
-    ${target_name} PRIVATE
+    ${TARGET_UNPACKER_NAME} PRIVATE
     # src
     
     C/7zCrc.h
