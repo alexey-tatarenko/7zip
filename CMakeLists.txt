@@ -7,6 +7,8 @@ project(7Zip
 	LANGUAGES C CXX ASM
 )
 
+enable_testing()
+
 add_definitions(
 	-D_CONSOLE
 	-DWIN_LONG_PATH
@@ -37,10 +39,9 @@ endif()
 
 set(MAIN_OUTPUT_DIR ${CMAKE_SOURCE_DIR}/Output/x64)
 
-set(TARGET_UNPACKER_NAME "Au7zUnpacker")
-add_library(${TARGET_UNPACKER_NAME} SHARED ${SOURCES})
+add_library(Au7zUnpacker SHARED ${SOURCES})
 
-set_target_properties(${TARGET_UNPACKER_NAME} PROPERTIES
+set_target_properties(Au7zUnpacker PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY_DEBUG ${MAIN_OUTPUT_DIR}/Debug/Binaries
     RUNTIME_OUTPUT_DIRECTORY_RELEASE ${MAIN_OUTPUT_DIR}/Release/Binaries
     RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL ${MAIN_OUTPUT_DIR}/MinSizeRel/Binaries
@@ -52,9 +53,8 @@ set_target_properties(${TARGET_UNPACKER_NAME} PROPERTIES
 )
 
 target_sources(
-    ${TARGET_UNPACKER_NAME} PRIVATE
-    # src
-    
+    Au7zUnpacker PRIVATE
+
     C/7zCrc.h
     C/7zTypes.h
     C/Alloc.h
@@ -258,4 +258,22 @@ target_sources(
 	CPP/7zip/UI/Console/UpdateCallbackConsole.cpp
 	CPP/7zip/UI/Console/UserInputUtils.cpp
 	CPP/7zip/UI/Console/console.def
+)
+
+add_executable(Test_7zip Test_7zip/test_7zip.cpp)
+
+target_include_directories(Test_7zip PUBLIC
+    CPP/7zip/UI/Common
+    ThirdParty/catch2
+)
+
+set_target_properties(Test_7zip PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY_DEBUG ${MAIN_OUTPUT_DIR}/Debug
+    RUNTIME_OUTPUT_DIRECTORY_RELEASE ${MAIN_OUTPUT_DIR}/Release
+    RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL ${MAIN_OUTPUT_DIR}/MinSizeRel
+    RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO ${MAIN_OUTPUT_DIR}/RelWithDebInfo
+    ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${MAIN_OUTPUT_DIR}/Debug
+    ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${MAIN_OUTPUT_DIR}/Release
+    ARCHIVE_OUTPUT_DIRECTORY_MINSIZEREL ${MAIN_OUTPUT_DIR}/MinSizeRel
+    ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO ${MAIN_OUTPUT_DIR}/RelWithDebInfo
 )
