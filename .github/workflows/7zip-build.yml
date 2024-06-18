@@ -57,24 +57,15 @@ jobs:
           echo "PRODUCT_VERSION=$match" | Out-File -FilePath $env:GITHUB_ENV -Append
         }
 
-    # Build 7zip
+    # Build and test 7zip
     - name: Build x64-7zip
       if: contains(matrix.project.depends_on, 'x64-7zip')
       shell: powershell
       run: |
         cmake -B Build -DCMAKE_BUILD_NUMBER=${{ github.run_number }}
         cmake --build Build --config Release
+        ctest --test-dir Build -C Release -VV
         rclone copy "${{ github.workspace }}\Output\x64\${{ env.BUILD_CONFIGURATION }}\Binaries" "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.ARTIFACTS_DIR }}" --include "*.{exe,dll}" --ignore-case
-
-    # Upload artifact output folders for unit tests
-    - uses: actions/upload-artifact@v4
-      if: contains(matrix.project.depends_on, 'x64-7zip')
-      with:
-        name: x64-7zip-output
-        path: |
-          ${{ github.workspace }}\Output
-        if-no-files-found: error
-        retention-days: 1
 
     # Zip artifacts
     - name: Zip artifacts
@@ -93,26 +84,3 @@ jobs:
     # - name: Upload release artifacts
     #   run: |
     #     rclone copy "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.UNPACKER_ARTIFACTS_NAME }}.7z" "${{ env.GDRIVE_ARTIFACTS_RELEASES_DIR }}/${{ env.PRODUCT_VERSION }}/RC/${{ github.run_id }}"
-
-  test_7zip:
-    name: Run Au7zUnpacker unit tests
-    needs: build_7zip
-    runs-on: windows-2022
-    strategy:
-      matrix:
-        brand: [ 'AURA' ]
-    env:
-      UNPACKER_ARTIFACTS_NAME_PART: ${{ matrix.brand }}
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - uses: actions/download-artifact@v4
-      with:
-        name: x64-7zip-output
-        path: ${{ github.workspace }}\Output
-
-    - name: Run tests x64-7zip
-      working-directory: Build
-      run: ctest . -C Release -VV
-
