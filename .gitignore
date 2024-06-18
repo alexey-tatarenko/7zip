@@ -5,3 +5,6 @@ Output/*
 *.vcxproj.user
 *.aps
 *.bak
+
+# Ignore CMake build files
+Build/*

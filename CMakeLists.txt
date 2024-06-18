@@ -17,25 +17,29 @@ add_definitions(
 	-DSUPPORT_DEVICE_FILE
 )
 
+if (CMAKE_BUILD_NUMBER)
+    add_definitions(-DGithubBuildNumber=${CMAKE_BUILD_NUMBER})
+endif ()
+
 if (MSVC)
     add_definitions(-DUNICODE -D_UNICODE -D_CRT_SECURE_NO_WARNINGS)
 else ()
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 endif ()
 
-if(NOT CMAKE_C_STANDARD)
+if (NOT CMAKE_C_STANDARD)
 	set(CMAKE_C_STANDARD 11)
-endif()
+endif ()
 
-if(NOT CMAKE_CXX_STANDARD)
+if (NOT CMAKE_CXX_STANDARD)
 	set(CMAKE_CXX_STANDARD 17)
-endif()
+endif ()
 
 set(BUILD_SHARED_LIBS ON)
 
-if(NOT CMAKE_BUILD_TYPE)
+if (NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE "RelWithDebInfo")
-endif()
+endif ()
 
 set(MAIN_OUTPUT_DIR ${CMAKE_SOURCE_DIR}/Output/x64)
 
@@ -277,3 +281,5 @@ set_target_properties(Test_7zip PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY_MINSIZEREL ${MAIN_OUTPUT_DIR}/MinSizeRel
     ARCHIVE_OUTPUT_DIRECTORY_RELWITHDEBINFO ${MAIN_OUTPUT_DIR}/RelWithDebInfo
 )
+
+add_test(NAME Test_7zip COMMAND Test_7zip)
