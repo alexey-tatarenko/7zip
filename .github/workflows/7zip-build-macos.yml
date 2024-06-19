@@ -1,0 +1,55 @@
+name: "[Engine] Build"
+
+on:
+  push:
+
+env:
+  BUILD_CONFIGURATION: Release
+  DEPENDENCIES_DIR: ${{ github.workspace }}\build\dependencies
+  ARTIFACTS_ROOT_DIR: ${{ github.workspace }}\build\artifacts
+
+jobs:
+  build_7zip:
+    name: Build 7zip DLL
+    runs-on: macos-latest
+
+    strategy:
+      matrix:
+        brand: [ 'AURA' ] # TODO: add 'IDG' once completed
+        project:
+          - name: x64-7zip
+            depends_on: [ 'x64-7zip' ]
+
+    env:
+      ARTIFACTS_DIR: ${{ matrix.project.name }}
+      UNPACKER_ARTIFACTS_NAME: ${{ matrix.brand }}-${{ matrix.project.name }}
+
+    steps:
+    # Checkout repo
+    - uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        brew update
+        brew install cmake
+
+    # Build and test 7zip
+    - name: Build x64-7zip
+      if: contains(matrix.project.depends_on, 'x64-7zip')
+      run: |
+        cmake -B Build -DCMAKE_BUILD_NUMBER=0
+        cmake --build Build --config Release
+        ctest --test-dir Build -C Release -VV
+
+    # Zip artifacts
+    - name: Zip artifacts
+      run: |
+        7z a -t7z -mx=9 "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.UNPACKER_ARTIFACTS_NAME }}.7z" "${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.ARTIFACTS_DIR }}\*"
+
+    # Upload artifacts
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.UNPACKER_ARTIFACTS_NAME }}
+        path: ${{ env.ARTIFACTS_ROOT_DIR }}\${{ env.UNPACKER_ARTIFACTS_NAME }}.7z
+        retention-days: 1
